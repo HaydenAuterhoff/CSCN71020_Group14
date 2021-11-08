@@ -62,3 +62,5 @@ int* getTriangleSides(int* triangleSides) {
 	}
 	return triangleSides;
 }
+
+//commit test
