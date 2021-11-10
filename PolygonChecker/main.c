@@ -21,6 +21,7 @@ int main() {
 
 			printf_s("Triangle selected.\n");
 			float triangleSides[3] = { 0.f, 0.f, 0.f };
+			float* triangleSidesPtr = getTriangleSides(triangleSides);
 			float angleValues[3] = { 0.f, 0.f, 0.f };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			float* triangleAnglesPtr = getTriangleSides(angleValues);
@@ -38,8 +39,8 @@ int main() {
 
 				
 			}
-
 			break;
+
 		case 2:
 			printf("Hello World");
 		case 0:
@@ -75,6 +76,18 @@ int main() {
 		return shapeChoice;
 	}
 
+int* getTriangleSides(int* triangleSides) {
+	printf_s("Enter the three sides of the triangle: ");
+	for (int i = 0.f; i < 3.f; i++)
+	{
+		if (scanf_s("%f", &triangleSides[i]) != 1)
+		{
+			printf("Invalid Input!\n");
+			exit(1);
+		}
+	}
+	return triangleSides;
+}
 	int* getTriangleSides(int* triangleSides) {
 		printf_s("Enter the three sides of the triangle: ");
 		for (int i = 0.f; i < 3.f; i++)
@@ -104,18 +117,21 @@ int main() {
 					printf("Triangle is valid.\n");
 					valid = true;
 				}
+				else{
 				else {
 
 					printf("Triangle is not valid.\n");
 					valid = false;
 				}
 			}
+			else{
 			else {
 
 				printf("Triangle is not valid.\n");
 				valid = false;
 			}
 		}
+		else{
 		else {
 
 			printf("Triangle is not valid.\n");
