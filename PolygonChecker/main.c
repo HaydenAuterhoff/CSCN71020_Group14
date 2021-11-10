@@ -19,9 +19,16 @@ int main() {
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
+			bool verify = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
+
+			if (verify == true){
+
+				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+				printf_s("%s\n", result);
+
+			}
+
 			break;
 		case 0:
 			continueProgram = false;
@@ -62,5 +69,48 @@ int* getTriangleSides(int* triangleSides) {
 	}
 	return triangleSides;
 }
+
+
+	bool verifyTriangle(int side1, int side2, int side3) {
+
+		bool valid;
+
+		if ((side1 + side2) > side3){
+
+			if ((side2 + side3) > side1){
+
+				if ((side1 + side3) > side2){
+
+					/*
+					 * If side1 + side2 > side3 and
+					 *    side2 + side3 > side1 and
+					 *    side1 + side3 > side2 then
+					 * the triangle is valid.
+					 */
+					printf("Triangle is valid.\n");
+					valid = true;
+				}
+				else{
+
+					printf("Triangle is not valid.\n");
+					valid = false;
+				}
+			}
+			else{
+
+				printf("Triangle is not valid.\n");
+				valid = false;
+			}
+		}
+		else{
+
+			printf("Triangle is not valid.\n");
+			valid = false;
+		}
+
+		return valid;
+	}
+ 
+
 
 //commit test
