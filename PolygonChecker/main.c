@@ -22,21 +22,15 @@ int main() {
 			printf_s("Triangle selected.\n");
 			float triangleSides[3] = { 0.f, 0.f, 0.f };
 			float* triangleSidesPtr = getTriangleSides(triangleSides);
-			float angleValues[3] = { 0.f, 0.f, 0.f };
-			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			float* triangleAnglesPtr = getTriangleSides(angleValues);
 
 			bool verify = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			int angles = getTriangleAngles(triangleAnglesPtr[0], triangleAnglesPtr[1], triangleAnglesPtr[2]);
-			
-
-			//printf_s("! %d\n", triangleSidesPtr[0]);
 
 			if (verify == true) {
 
 				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 				printf_s("%s\n", result);
 
+				int angles = getTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 				
 			}
 			break;
@@ -88,14 +82,7 @@ int* getTriangleSides(int* triangleSides) {
 	}
 	return triangleSides;
 }
-	int* getTriangleSides(int* triangleSides) {
-		printf_s("Enter the three sides of the triangle: ");
-		for (int i = 0.f; i < 3.f; i++)
-		{
-			scanf_s("%f", &triangleSides[i]);
-		}
-		return triangleSides;
-	}
+
 
 
 	bool verifyTriangle(float side1, float side2, float side3) {
