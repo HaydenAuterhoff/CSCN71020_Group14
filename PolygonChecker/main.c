@@ -118,20 +118,20 @@ int* getTriangleSides(int* triangleSides) {
 					valid = true;
 				}
 				else{
-				else {
+				
 
 					printf("Triangle is not valid.\n");
 					valid = false;
 				}
 			}
-			else{
+			
 			else {
 
 				printf("Triangle is not valid.\n");
 				valid = false;
 			}
 		}
-		else{
+		
 		else {
 
 			printf("Triangle is not valid.\n");
