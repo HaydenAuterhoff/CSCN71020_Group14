@@ -74,7 +74,7 @@ int* getTriangleSides(int* triangleSides) {
 }
 
 
-	bool verifyTriangle(int side1, int side2, int side3) {
+	bool verifyTriangle(float side1, float side2, float side3) {
 
 		bool valid;
 
