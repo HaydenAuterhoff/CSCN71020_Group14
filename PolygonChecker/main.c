@@ -17,7 +17,7 @@ int main() {
 		{
 		case 1:
 			printf_s("Triangle selected.\n");
-			int triangleSides[3] = { 0, 0, 0 };
+			float triangleSides[3] = { 0.f, 0.f, 0.f };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
@@ -56,7 +56,7 @@ int printShapeMenu() {
 
 int* getTriangleSides(int* triangleSides) {
 	printf_s("Enter the three sides of the triangle: ");
-	for (int i = 0; i < 3; i++)
+	for (int i = 0.f; i < 3.f; i++)
 	{
 		scanf_s("%f", &triangleSides[i]);
 	}
