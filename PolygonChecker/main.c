@@ -17,7 +17,7 @@ int main() {
 		{
 		case 1:
 			printf_s("Triangle selected.\n");
-			int triangleSides[3] = { 0, 0, 0 };
+			float triangleSides[3] = { 0.f, 0.f, 0.f };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			bool verify = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
@@ -30,6 +30,8 @@ int main() {
 			}
 
 			break;
+		case 2:
+			printf("Hello World");
 		case 0:
 			continueProgram = false;
 			break;
@@ -50,7 +52,8 @@ void printWelcome() {
 }
 
 int printShapeMenu() {
-	printf_s("1. Triangle\n");
+	printf_s("1. Triangle\n"); 
+	printf_s("2. Rectangle\n");
 	printf_s("0. Exit\n");
 
 	int shapeChoice;
@@ -63,9 +66,9 @@ int printShapeMenu() {
 
 int* getTriangleSides(int* triangleSides) {
 	printf_s("Enter the three sides of the triangle: ");
-	for (int i = 0; i < 3; i++)
+	for (int i = 0.f; i < 3.f; i++)
 	{
-		scanf_s("%d", &triangleSides[i]);
+		scanf_s("%f", &triangleSides[i]);
 	}
 	return triangleSides;
 }
