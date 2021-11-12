@@ -31,12 +31,17 @@ int main() {
 				printf_s("%s\n", result);
 
 				int angles = getTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-				
 			}
 			break;
 
 		case 2:
-			printf("Hello World");
+			printf("Rectangle Selected. \n");
+			float rectanglePoints[2] = { 0.f, 0.f };
+			float* rectanglePointsPtr1 = getRectanglePoints(rectanglePoints);
+			float* rectanglePointsPtr2 = getRectanglePoints(rectanglePoints);
+			float* rectanglePointsPtr3 = getRectanglePoints(rectanglePoints);
+			float* rectanglePointsPtr4 = getRectanglePoints(rectanglePoints);
+
 		case 0:
 			continueProgram = false;
 			break;
@@ -83,7 +88,14 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
-
+int* getRectanglePoints(int* rectangleSides)
+{
+	for (int i = 0.f; i < 2.f; i++) 
+	{
+		printf_s("Enter point %d (x,y): \n", i);
+		scanf_s("%f", &rectangleSides[i]);
+	}
+}
 
 	bool verifyTriangle(float side1, float side2, float side3) {
 
