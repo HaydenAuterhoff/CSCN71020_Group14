@@ -30,13 +30,13 @@ int main() {
 				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 				printf_s("%s\n", result);
 
-				int angles = getTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+				int angles = getTriangleAnglesT(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			}
 			break;
 
 		case 2:
 			printf("Rectangle Selected. \n");
-			float rectanglePoints[2] = { 0.f, 0.f };
+			float rectanglePoints[8] = { 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f };
 			float* rectanglePointsPtr1 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr2 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr3 = getRectanglePoints(rectanglePoints);
@@ -159,9 +159,3 @@ int* getRectanglePoints(int* rectangleSides)
 
 		return 0;
 	}
-
-	
- 
-
-
-//commit test
