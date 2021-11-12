@@ -10,9 +10,11 @@
 
 int side = 0;
 
-int main() {
+int main() 
+{
 	bool continueProgram = true;
-	while (continueProgram) {
+	while (continueProgram) 
+	{
 		printWelcome();
 
 		int shapeChoice = printShapeMenu();
@@ -27,8 +29,8 @@ int main() {
 
 			bool verify = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 
-			if (verify == true) {
-
+			if (verify == true) 
+			{
 				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 				printf_s("%s\n", result);
 
@@ -39,11 +41,12 @@ int main() {
 		case 2:
 			printf("Rectangle Selected. \n");
 			float rectanglePoints[2] = { 0.f, 0.f };
+			
 			float* rectanglePointsPtr1 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr2 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr3 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr4 = getRectanglePoints(rectanglePoints);
-
+			
 		case 0:
 			continueProgram = false;
 			break;
@@ -56,7 +59,8 @@ int main() {
 }
 
 
-	void printWelcome() {
+	void printWelcome() 
+	{
 		printf_s("\n");
 		printf_s(" **********************\n");
 		printf_s("**     Welcome to     **\n");
@@ -64,7 +68,8 @@ int main() {
 		printf_s(" **********************\n");
 	}
 
-	int printShapeMenu() {
+	int printShapeMenu() 
+	{
 		printf_s("1. Triangle\n");
 		printf_s("2. Rectangle\n");
 		printf_s("0. Exit\n");
@@ -90,13 +95,14 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
-int* getRectanglePoints(int* rectangleSides)
+int getRectanglePoints(int* rectanglePoints) //not sure why this is not working (C2040 - differs in levels of indirection)
 {
+	printf_s("Enter the two points (x,y): ");
 	for (int i = 0.f; i < 2.f; i++) 
 	{
-		printf_s("Enter point %d (x,y): \n", i);
-		scanf_s("%f", &rectangleSides[i]);
+		scanf_s("%f", &rectanglePoints[i]);
 	}
+	return rectanglePoints;
 }
 
 	bool verifyTriangle(float side1, float side2, float side3) {
@@ -161,9 +167,5 @@ int* getRectanglePoints(int* rectangleSides)
 
 		return 0;
 	}
-
-	
- 
-
 
 //commit test
