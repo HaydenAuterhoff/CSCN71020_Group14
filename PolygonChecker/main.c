@@ -6,8 +6,6 @@
 #include "triangleSolver.h"
 #include "GetTriangleAngles.h"
 
-//No code modified, just a test push by yours truly
-
 int side = 0;
 
 int main() {
