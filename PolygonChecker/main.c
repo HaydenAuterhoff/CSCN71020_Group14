@@ -44,18 +44,10 @@ int main()
 			float rectanglePoints[8] = { 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f };
 			float* rectanglePointsPtr = getRectanglePoints(rectanglePoints);
 
-			printf("%f %f %f %f %f %f %f %f", rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5], rectanglePointsPtr[6], rectanglePointsPtr[7]);
-
-
+			int rectangle = makeShape(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5], rectanglePointsPtr[6], rectanglePointsPtr[7]);
 			//int length1 = makeShape(rectanglePointsPtr1[0], rectanglePointsPtr1[1], rectanglePointsPtr2[0], rectanglePointsPtr2[1]);
 			//printf("%d", length1);
-			/*
-			float rectangleSidesPtr2 = makeShape(rectanglePointsPtr1, rectanglePointsPtr3);
-			float rectangleSidesPtr3 = makeShape(rectanglePointsPtr1, rectanglePointsPtr4);
-			float rectangleSidesPtr4 = makeShape(rectanglePointsPtr2, rectanglePointsPtr3);
-			float rectangleSidesPtr5 = makeShape(rectanglePointsPtr2, rectanglePointsPtr4);
-			float rectangleSidesPtr6 = makeShape(rectanglePointsPtr3, rectanglePointsPtr4);
-			*/
+
 		case 0:
 			continueProgram = false;
 			break;
@@ -119,15 +111,12 @@ int* getRectanglePoints(int* rectangleSides)
 	return rectangleSides;
 }
 
-int* makeShape(float Point1[], float Point2[])
+float* makeShape(float point1x, float point1y, float point2x, float point2y, float point3x, float point3y, float point4x, float point4y)
 {
-	int sideLength;
-	float xPoint = Point1[0] - Point2[0];
-	float yPoint = Point1[1] - Point2[1];
+	int sideLength1 = sqrt((point1x - point2x) * (point1x - point2x) + ((point1y - point2y) * (point1y - point2y)));
+	printf("%d", sideLength1);
 
-	sideLength = sqrt((xPoint * xPoint) + (yPoint * yPoint));
-
-	return sideLength;
+	//return sideLength;
 }
 
 bool verifyTriangle(float side1, float side2, float side3) {
