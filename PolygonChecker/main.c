@@ -44,6 +44,8 @@ int main()
 			float rectanglePoints[8] = { 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f };
 			float* rectanglePointsPtr = getRectanglePoints(rectanglePoints);
 
+			printf("%f %f %f %f %f %f %f %f", rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5], rectanglePointsPtr[6], rectanglePointsPtr[7]);
+
 
 			//int length1 = makeShape(rectanglePointsPtr1[0], rectanglePointsPtr1[1], rectanglePointsPtr2[0], rectanglePointsPtr2[1]);
 			//printf("%d", length1);
@@ -104,9 +106,9 @@ int* getTriangleSides(int* triangleSides) {
 
 int* getRectanglePoints(int* rectangleSides)
 {
+	int k = 0;
 	for (int i = 0.f; i < 4.f; i++)
 	{
-		int k = 0;
 		printf("Enter point %d: ", i+1);
 		for (int j = 0.f; j < 2.f; j++)
 		{
