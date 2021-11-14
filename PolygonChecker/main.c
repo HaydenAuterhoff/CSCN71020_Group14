@@ -8,10 +8,11 @@
 
 int side = 0;
 
-int main() 
+int main()
 {
 	bool continueProgram = true;
-	while (continueProgram) 
+	bool isRectangle = true;
+	while (continueProgram)
 	{
 		printWelcome();
 
@@ -20,14 +21,14 @@ int main()
 		switch (shapeChoice)
 		{
 		case 1:
-
+				
 			printf_s("Triangle selected.\n");
 			float triangleSides[3] = { 0.f, 0.f, 0.f };
 			float* triangleSidesPtr = getTriangleSides(triangleSides);
 
 			bool verify = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 
-			if (verify == true) 
+			if (verify == true)
 			{
 				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 				printf_s("%s\n", result);
@@ -43,8 +44,18 @@ int main()
 			float* rectanglePointsPtr2 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr3 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr4 = getRectanglePoints(rectanglePoints);
-			break;
-			
+
+
+
+			if (isRectangle == true)
+			{
+				int shapePA = PerimeterAndArea();
+			}
+			else
+			{
+				int shapeP = Perimeter();
+			}
+
 		case 0:
 			continueProgram = false;
 			break;
@@ -57,28 +68,28 @@ int main()
 }
 
 
-	void printWelcome() 
-	{
-		printf_s("\n");
-		printf_s(" **********************\n");
-		printf_s("**     Welcome to     **\n");
-		printf_s("**   Polygon Checker  **\n");
-		printf_s(" **********************\n");
-	}
+void printWelcome()
+{
+	printf_s("\n");
+	printf_s(" **********************\n");
+	printf_s("**     Welcome to     **\n");
+	printf_s("**   Polygon Checker  **\n");
+	printf_s(" **********************\n");
+}
 
-	int printShapeMenu() 
-	{
-		printf_s("1. Triangle\n");
-		printf_s("2. Rectangle\n");
-		printf_s("0. Exit\n");
+int printShapeMenu()
+{
+	printf_s("1. Triangle\n");
+	printf_s("2. Rectangle\n");
+	printf_s("0. Exit\n");
 
-		int shapeChoice;
+	int shapeChoice;
 
-		printf_s("Enter number: ");
-		scanf_s("%1o", &shapeChoice);
+	printf_s("Enter number: ");
+	scanf_s("%1o", &shapeChoice);
 
-		return shapeChoice;
-	}
+	return shapeChoice;
+}
 
 int* getTriangleSides(int* triangleSides) {
 	printf_s("Enter the three sides of the triangle: ");
@@ -96,76 +107,121 @@ int* getTriangleSides(int* triangleSides) {
 int getRectanglePoints(int* rectanglePoints) //not sure why this is not working (C2040 - differs in levels of indirection)
 {
 	printf_s("Enter the two points (x,y): ");
-	for (int i = 0.f; i < 2.f; i++) 
+	for (int i = 0.f; i < 2.f; i++)
 	{
 		scanf_s("%f", &rectanglePoints[i]);
 	}
 	return rectanglePoints;
 }
 
-	bool verifyTriangle(float side1, float side2, float side3) {
+bool verifyTriangle(float side1, float side2, float side3) {
 
-		bool valid;
+	bool valid;
 
-		if ((side1 + side2) > side3) {
+	if ((side1 + side2) > side3) {
 
-			if ((side2 + side3) > side1) {
+		if ((side2 + side3) > side1) {
 
-				if ((side1 + side3) > side2) {
+			if ((side1 + side3) > side2) {
 
-					/*
-					 * If side1 + side2 > side3 and
-					 *    side2 + side3 > side1 and
-					 *    side1 + side3 > side2 then
-					 * the triangle is valid.
-					 */
-					printf("Triangle is valid.\n");
-					valid = true;
-				}
-				else{
-				
-
-					printf("Triangle is not valid.\n");
-					valid = false;
-				}
+				/*
+				 * If side1 + side2 > side3 and
+				 *    side2 + side3 > side1 and
+				 *    side1 + side3 > side2 then
+				 * the triangle is valid.
+				 */
+				printf("Triangle is valid.\n");
+				valid = true;
 			}
-			
 			else {
+
 
 				printf("Triangle is not valid.\n");
 				valid = false;
 			}
 		}
-		
+
 		else {
 
 			printf("Triangle is not valid.\n");
 			valid = false;
 		}
-
-		return valid;
 	}
 
-	float* getTriangleAngles(float side1, float side2, float side3)
-	{
-		float pi, s, area, R;
-		float angle1, angle2, angle3;
-		pi = acos(-1);
+	else {
 
-		s = (side1 + side2 + side3) / 2;
-		area = sqrt(s * (s - side1) * (s - side2) * (s - side3));
-
-		R = (side1 * side2 * side3) / (4 * area);
-
-		angle1 = (180 / pi) * asin(side1 / (2 * R));
-		angle2 = (180 / pi) * asin(side2 / (2 * R));
-		angle3 = (180 / pi) * asin(side3 / (2 * R));
-
-		printf("Angles: %6.2f %6.2f %6.2f\n", angle1, angle2, angle3);
-
-		return 0;
+		printf("Triangle is not valid.\n");
+		valid = false;
 	}
 
-	
+	return valid;
+}
+
+float* getTriangleAngles(float side1, float side2, float side3)
+{
+	float pi, s, area, R;
+	float angle1, angle2, angle3;
+	pi = acos(-1);
+
+	s = (side1 + side2 + side3) / 2;
+	area = sqrt(s * (s - side1) * (s - side2) * (s - side3));
+
+	R = (side1 * side2 * side3) / (4 * area);
+
+	angle1 = (180 / pi) * asin(side1 / (2 * R));
+	angle2 = (180 / pi) * asin(side2 / (2 * R));
+	angle3 = (180 / pi) * asin(side3 / (2 * R));
+
+	printf("Angles: %6.2f %6.2f %6.2f\n", angle1, angle2, angle3);
+
+	return 0;
+}
+
+int rectanglePerimeter(int h, int w)
+{
+
+	int p = (2 * h) + (2 * w);
+	return p;
+}
+
+int rectangleArea(int h, int w)
+{
+	int a = h * w;
+	return a;
+}
+int PerimeterAndArea()
+{
+	int h, w, perimeter, area;
+	printf("Tell me the height and width of the rectangle: ");
+
+	scanf_s("%i", &h);
+	scanf_s("%i", &w);
+
+	perimeter = rectanglePerimeter(h, w);
+
+	area = rectangleArea(h, w);
+
+	printf("Perimeter of the rectangle = %i units\n", perimeter);
+
+	printf("Area of the rectangle = %i units squared", area);
+
+	return 0;
+}
+int Perimeter()
+{
+	int h, w, perimeter;
+	printf("Tell me the height and width of the rectangle: ");
+
+	scanf_s("%i", &h);
+	scanf_s("%i", &w);
+
+	perimeter = rectanglePerimeter(h, w);
+
+	printf("Perimeter of the rectangle = %i centimeters\n", perimeter);
+
+	return 0;
+}
+
+
 //commit test
 //commit test2
