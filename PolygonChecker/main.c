@@ -43,6 +43,7 @@ int main()
 			float* rectanglePointsPtr2 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr3 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr4 = getRectanglePoints(rectanglePoints);
+			break;
 			
 		case 0:
 			continueProgram = false;
@@ -166,7 +167,5 @@ int getRectanglePoints(int* rectanglePoints) //not sure why this is not working 
 	}
 
 	
- 
-
-
 //commit test
+//commit test2
