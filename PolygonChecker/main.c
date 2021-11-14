@@ -5,6 +5,7 @@
 #include "main.h"
 #include "triangleSolver.h"
 #include "GetTriangleAngles.h"
+#include "GetRectangleAngles.h"
 
 int side = 0;
 
@@ -43,6 +44,9 @@ int main()
 			float* rectanglePointsPtr2 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr3 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr4 = getRectanglePoints(rectanglePoints);
+
+
+			float angles = getRectangleAngles(rectanglePointsPtr1, rectanglePointsPtr2, rectanglePointsPtr3, rectanglePointsPtr4);
 			break;
 			
 		case 0:
