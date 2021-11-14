@@ -26,11 +26,10 @@ int main() {
 			bool verify = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 
 			if (verify == true) {
-
 				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 				printf_s("%s\n", result);
 
-				int angles = getTriangleAnglesT(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+				int angles = getTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			}
 			break;
 
@@ -41,6 +40,8 @@ int main() {
 			float* rectanglePointsPtr2 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr3 = getRectanglePoints(rectanglePoints);
 			float* rectanglePointsPtr4 = getRectanglePoints(rectanglePoints);
+
+			float
 
 		case 0:
 			continueProgram = false;
@@ -74,7 +75,7 @@ int main() {
 
 		return shapeChoice;
 	}
-
+	
 int* getTriangleSides(int* triangleSides) {
 	printf_s("Enter the three sides of the triangle: ");
 	for (int i = 0.f; i < 3.f; i++)
@@ -88,11 +89,11 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
-int* getRectanglePoints(int* rectangleSides)
+int getRectanglePoints(int* rectangleSides)
 {
+	printf_s("Enter the two points (x y): ");
 	for (int i = 0.f; i < 2.f; i++) 
 	{
-		printf_s("Enter point %d (x,y): \n", i);
 		scanf_s("%f", &rectangleSides[i]);
 	}
 }
@@ -138,24 +139,4 @@ int* getRectanglePoints(int* rectangleSides)
 		}
 
 		return valid;
-	}
-
-	float* getTriangleAngles(float side1, float side2, float side3)
-	{
-		float pi, s, area, R;
-		float angle1, angle2, angle3;
-		pi = acos(-1);
-
-		s = (side1 + side2 + side3) / 2;
-		area = sqrt(s * (s - side1) * (s - side2) * (s - side3));
-
-		R = (side1 * side2 * side3) / (4 * area);
-
-		angle1 = (180 / pi) * asin(side1 / (2 * R));
-		angle2 = (180 / pi) * asin(side2 / (2 * R));
-		angle3 = (180 / pi) * asin(side3 / (2 * R));
-
-		printf("Angles: %6.2f %6.2f %6.2f\n", angle1, angle2, angle3);
-
-		return 0;
 	}
