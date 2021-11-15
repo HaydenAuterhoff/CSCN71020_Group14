@@ -30,7 +30,7 @@ int main()
 			//Call Function to verify shape is a triangle using the three side lengths
 			bool verifyTri = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 
-			if (verifyTri == true) 
+			if (verifyTri == true)
 			{
 				//Call Function to analyze Triangle to determine the type of triangle
 				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
@@ -197,10 +197,12 @@ bool verifyTriangle(float side1, float side2, float side3) {
 		return valid;
 	}
 
-bool verifyWhatQuadrilateral(side1, side2, side3, side4) {
 
-	
-
-
+bool verifyRectangle(int side1, int side2, int side3, int side4) //Verify the rectangle using Pythagorean Theorem (Two right-angled triangles)
+{
+	if (sqrt((side1 * side1) + (side2 * side2)) == (sqrt((side3 * side3) + (side4 * side4))))
+	{
+		return true;
+	}
 
 }
