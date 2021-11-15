@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <math.h>
 
-#include "GetTriangleAngles.h"
+#include "main.h"
 
 float* getTriangleAngles(float side1, float side2, float side3)
 {

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "triangleSolver.h"
+#include "main.h"
 
 char* analyzeTriangle(int side1, int side2, int side3) {
 	char* result = "";

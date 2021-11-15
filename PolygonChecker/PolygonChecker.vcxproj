@@ -144,9 +144,7 @@
     <ClCompile Include="triangleSolver.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GetTriangleAngles.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="triangleSolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

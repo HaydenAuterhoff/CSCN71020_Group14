@@ -3,8 +3,8 @@
 #include <math.h>
 
 #include "main.h"
-#include "triangleSolver.h"
-#include "GetTriangleAngles.h"
+//#include "triangleSolver.h"
+//#include "GetTriangleAngles.h"
 //#include "GetRectangleAngles.h"
 
 int side = 0;
@@ -197,6 +197,18 @@ bool verifyTriangle(float side1, float side2, float side3) {
 		return valid;
 	}
 
+// these two functions do the calculations for determining the perimeter and area of a rectangle
+int rectanglePerimeter(int sideLength1, int sideLength2, int sideLength3, int sideLength4)
+{
+	int p = sideLength1 + sideLength2 + sideLength3 + sideLength4;
+	printf("Perimeter of the shape = %i units\n", p);
+}
+
+int rectangleArea(int sideLength1, int sideLength2)
+{
+	int a = sideLength1 * sideLength2;
+	printf("Area of the rectangle = %i units squared", a);
+}
 
 bool verifyRectangle(int side1, int side2, int side3, int side4) //Verify the rectangle using Pythagorean Theorem (Two right-angled triangles)
 {
@@ -204,5 +216,4 @@ bool verifyRectangle(int side1, int side2, int side3, int side4) //Verify the re
 	{
 		return true;
 	}
-
 }
