@@ -5,14 +5,13 @@
 #include "main.h"
 #include "triangleSolver.h"
 #include "GetTriangleAngles.h"
-#include "GetRectangleAngles.h"
+//#include "GetRectangleAngles.h"
 
 int side = 0;
 
 int main()
 {
 
-	//bool isRectangle = true;
 	bool continueProgram = true;
 	while (continueProgram)
 	{
@@ -28,13 +27,16 @@ int main()
 			float triangleSides[3] = { 0.f, 0.f, 0.f };
 			float* triangleSidesPtr = getTriangleSides(triangleSides);
 
+			//Call Function to verify shape is a triangle using the three side lengths
 			bool verifyTri = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 
-			if (verifyTri == true) {
-
+			if (verifyTri == true) 
+			{
+				//Call Function to analyze Triangle to determine the type of triangle
 				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 				printf_s("%s\n", result);
 
+				//Call Function to calculate the angles of the triangle
 				int angles = getTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			}
 			break;
@@ -45,20 +47,20 @@ int main()
 			float rectanglePoints[8] = { 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f };
 			float* rectanglePointsPtr = getRectanglePoints(rectanglePoints);
 
+			//Call Function to determine the length between each point (In user-input order)
 			int sideLength1 = makeShape1(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3]); //Length of Point 1 --> Point 2
-			int sideLength2 = makeShape2(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]);
-			int sideLength3 = makeShape3(rectanglePointsPtr[4], rectanglePointsPtr[5], rectanglePointsPtr[6], rectanglePointsPtr[7]);
-			int sideLength4 = makeShape4(rectanglePointsPtr[6], rectanglePointsPtr[7], rectanglePointsPtr[0], rectanglePointsPtr[1]);
-			//int sideLength5 = makeShape5(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[4], rectanglePointsPtr[5]);
+			int sideLength2 = makeShape2(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]); //Length of Point 2 --> Point 3
+			int sideLength3 = makeShape3(rectanglePointsPtr[4], rectanglePointsPtr[5], rectanglePointsPtr[6], rectanglePointsPtr[7]); //Length of Point 3 --> Point 4
+			int sideLength4 = makeShape4(rectanglePointsPtr[6], rectanglePointsPtr[7], rectanglePointsPtr[0], rectanglePointsPtr[1]); //Length of Point 4 --> Point 1
 
-			printf("%d", sideLength1);
-
+			//Call Function to verify shape is a rectangle using Pythagorean Theorem
 			bool verifyRec = verifyRectangle(sideLength1, sideLength2, sideLength3, sideLength4);
 
 			if (verifyRec == true)
 			{
+				//Call Function to determine the perimeter of the shape
 				rectanglePerimeter(sideLength1, sideLength2, sideLength3, sideLength4);
-				rectangleArea(sideLength1, sideLength2);
+				rectangleArea(sideLength1, sideLength2); //Call Function to determine the area of the rectangle
 			}
 			else
 			{
@@ -157,14 +159,7 @@ float* makeShape4(float point3x, float point3y, float point4x, float point4y)
 
 	return sideLength4;
 }
-/*
-float* makeShape5(float point1x, float point1y, float point3x, float point3y)
-{
-	int sideLength5 = sqrt((point1x - point3x) * (point1x - point3x) + ((point1y - point3y) * (point1y - point3y)));
-
-	return sideLength5;
-}
-*/
+// The sum of two sides needs to be greater than the length of the third side (Ex. 3 4 5 is valid, but 1 1 15 is not valid)
 bool verifyTriangle(float side1, float side2, float side3) {
 
 	bool valid;
@@ -202,7 +197,7 @@ bool verifyTriangle(float side1, float side2, float side3) {
 	return valid;
 }
 
-// these two functions do the calculations
+// these two functions do the calculations for determining the perimeter and area of a rectangle
 int rectanglePerimeter(int sideLength1, int sideLength2, int sideLength3, int sideLength4)
 {
 	int p = sideLength1 + sideLength2 + sideLength3 + sideLength4;
@@ -215,9 +210,9 @@ int rectangleArea(int sideLength1, int sideLength2)
 	printf("Area of the rectangle = %i units squared", a);
 }
 
-bool verifyRectangle(int side1, int side2, int side3, int side4)
+bool verifyRectangle(int side1, int side2, int side3, int side4) //Verify the rectangle using Pythagorean Theorem (Two right-angled triangles)
 {
-	if ((sqrt(side1*side1) + (side2*side2)) == (sqrt(side3*side3) + (side4*side4)))
+	if (sqrt((side1*side1) + (side2*side2)) == (sqrt((side3*side3) + (side4*side4))))
 	{
 		return true;
 	}
