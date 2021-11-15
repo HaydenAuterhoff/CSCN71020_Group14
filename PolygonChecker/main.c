@@ -5,18 +5,13 @@
 #include "main.h"
 #include "triangleSolver.h"
 #include "GetTriangleAngles.h"
-#include "GetRectangleAngles.h"
+//#include "GetRectangleAngles.h"
 
 int side = 0;
 
 int main()
 {
-	float sideLength1;
-	float sideLength2;
-	float sideLength3;
-	float sideLength4;
 
-	bool isRectangle = true;
 	bool continueProgram = true;
 	while (continueProgram)
 	{
@@ -32,15 +27,16 @@ int main()
 			float triangleSides[3] = { 0.f, 0.f, 0.f };
 			float* triangleSidesPtr = getTriangleSides(triangleSides);
 
-			//printf("%f %f %f", triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			//Call Function to verify shape is a triangle using the three side lengths
+			bool verifyTri = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 
-			bool verify = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-
-			if (verify == true) {
-
+			if (verifyTri == true)
+			{
+				//Call Function to analyze Triangle to determine the type of triangle
 				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 				printf_s("%s\n", result);
 
+				//Call Function to calculate the angles of the triangle
 				int angles = getTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			}
 			break;
@@ -51,17 +47,20 @@ int main()
 			float rectanglePoints[8] = { 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f };
 			float* rectanglePointsPtr = getRectanglePoints(rectanglePoints);
 
-			bool angles = getRectangleAngles(10, 20, 20, 10);
+			//Call Function to determine the length between each point (In user-input order)
+			int sideLength1 = makeShape1(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3]); //Length of Point 1 --> Point 2
+			int sideLength2 = makeShape2(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]); //Length of Point 2 --> Point 3
+			int sideLength3 = makeShape3(rectanglePointsPtr[4], rectanglePointsPtr[5], rectanglePointsPtr[6], rectanglePointsPtr[7]); //Length of Point 3 --> Point 4
+			int sideLength4 = makeShape4(rectanglePointsPtr[6], rectanglePointsPtr[7], rectanglePointsPtr[0], rectanglePointsPtr[1]); //Length of Point 4 --> Point 1
 
-			int sideLength1 = makeShape1(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3]);
-			int sideLength2 = makeShape2(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[6], rectanglePointsPtr[7]);
-			int sideLength3 = makeShape3(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]);
-			int sideLength4 = makeShape4(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[6], rectanglePointsPtr[7]);
+			//Call Function to verify shape is a rectangle using Pythagorean Theorem
+			bool verifyRec = verifyRectangle(sideLength1, sideLength2, sideLength3, sideLength4);
 
-			if (isRectangle = true)
+			if (verifyRec == true)
 			{
+				//Call Function to determine the perimeter of the shape
 				rectanglePerimeter(sideLength1, sideLength2, sideLength3, sideLength4);
-				rectangleArea(sideLength1, sideLength2);
+				rectangleArea(sideLength1, sideLength2); //Call Function to determine the area of the rectangle
 			}
 			else
 			{
@@ -118,12 +117,12 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
-int getRectanglePoints(int* rectangleSides)
+int* getRectanglePoints(int* rectangleSides)
 {
 	int k = 0;
 	for (int i = 0.f; i < 4.f; i++)
 	{
-		printf("Enter point %d: ", i + 1);
+		printf("Enter point %d (x y): ", i + 1);
 		for (int j = 0.f; j < 2.f; j++)
 		{
 			scanf_s("%f", &rectangleSides[i + k + j]);
@@ -160,7 +159,7 @@ float* makeShape4(float point3x, float point3y, float point4x, float point4y)
 
 	return sideLength4;
 }
-
+// The sum of two sides needs to be greater than the length of the third side (Ex. 3 4 5 is valid, but 1 1 15 is not valid)
 bool verifyTriangle(float side1, float side2, float side3) {
 
 	bool valid;
@@ -198,15 +197,7 @@ bool verifyTriangle(float side1, float side2, float side3) {
 	return valid;
 }
 
-// these two functions do the calculations
-int rectanglePerimeter(int sideLength1, int sideLength2, int sideLength3, int sideLength4)
-{
-	int p = sideLength1 + sideLength2 + sideLength3 + sideLength4;
-	printf("Perimeter of the shape = %i units\n", p);
-}
+bool verifyWhatQuadrilateral(side1, side2, side3, side4) {
 
-int rectangleArea(int sideLength1, int sideLength2)
-{
-	int a = sideLength1 * sideLength2;
-	printf("Area of the rectangle = %i units squared", a);
+
 }
