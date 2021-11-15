@@ -51,8 +51,6 @@ int main()
 			float rectanglePoints[8] = { 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f };
 			float* rectanglePointsPtr = getRectanglePoints(rectanglePoints);
 
-			bool angles = getRectangleAngles(10, 20, 20, 10);
-
 			int sideLength1 = makeShape1(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3]);
 			int sideLength2 = makeShape2(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[6], rectanglePointsPtr[7]);
 			int sideLength3 = makeShape3(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]);
@@ -108,7 +106,7 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
-int getRectanglePoints(int* rectangleSides)
+int* getRectanglePoints(int* rectangleSides)
 {
 	int k = 0;
 	for (int i = 0.f; i < 4.f; i++)
@@ -187,11 +185,3 @@ bool verifyTriangle(float side1, float side2, float side3) {
 
 		return valid;
 	}
-
-bool verifyWhatQuadrilateral(side1, side2, side3, side4) {
-
-	
-
-
-
-}
