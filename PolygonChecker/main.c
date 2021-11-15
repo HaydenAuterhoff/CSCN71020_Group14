@@ -16,7 +16,6 @@ int main()
 	float sideLength3;
 	float sideLength4;
 
-	bool continueProgram = true;
 	bool isRectangle = true;
 	bool continueProgram = true;
 	while (continueProgram)
@@ -56,6 +55,16 @@ int main()
 			int sideLength2 = makeShape2(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[6], rectanglePointsPtr[7]);
 			int sideLength3 = makeShape3(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]);
 			int sideLength4 = makeShape4(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[6], rectanglePointsPtr[7]);
+
+			if (isRectangle = true)
+			{
+				rectanglePerimeter(sideLength1, sideLength2, sideLength3, sideLength4);
+				rectangleArea(sideLength1, sideLength2);
+			}
+			else
+			{
+				rectanglePerimeter(sideLength1, sideLength2, sideLength3, sideLength4);
+			}
 
 			break;
 
@@ -187,48 +196,15 @@ bool verifyTriangle(float side1, float side2, float side3) {
 	return valid;
 }
 
-
-int rectanglePerimeter(int h, int w)
+// these two functions do the calculations
+int rectanglePerimeter(int sideLength1, int sideLength2, int sideLength3, int sideLength4)
 {
-
-	int p = (2 * h) + (2 * w);
-	return p;
+	int p = sideLength1 + sideLength2 + sideLength3 + sideLength4;
+	printf("Perimeter of the shape = %i units\n", p);
 }
 
-int rectangleArea(int h, int w)
+int rectangleArea(int sideLength1, int sideLength2)
 {
-	int a = h * w;
-	return a;
-}
-int PerimeterAndArea()
-{
-	int h, w, perimeter, area;
-	printf("\nTell me the height and width of the rectangle: ");
-
-	scanf_s("%i", &h);
-	scanf_s("%i", &w);
-
-	perimeter = rectanglePerimeter(h, w);
-
-	area = rectangleArea(h, w);
-
-	printf("Perimeter of the rectangle = %i units\n", perimeter);
-
-	printf("Area of the rectangle = %i units squared", area);
-
-	return 0;
-}
-int Perimeter()
-{
-	int h, w, perimeter;
-	printf("Tell me the height and width of the rectangle: ");
-
-	scanf_s("%i", &h);
-	scanf_s("%i", &w);
-
-	perimeter = rectanglePerimeter(h, w);
-
-	printf("Perimeter of the rectangle = %i centimeters\n", perimeter);
-
-	return 0;
+	int a = sideLength1 * sideLength2;
+	printf("Area of the rectangle = %i units squared", a);
 }
