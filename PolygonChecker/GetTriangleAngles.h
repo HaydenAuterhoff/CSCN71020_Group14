@@ -1,4 +1,3 @@
-
 #pragma once
 
-float* getTriangleAnglesT(float, float, float);
+float* getTriangleAngles(float, float, float);
