@@ -4,7 +4,7 @@
 
 #include "GetTriangleAngles.h"
 
-float* getTriangleAngles(float side1, float side2, float side3)
+float* getTriangleAnglesT(float side1, float side2, float side3)
 {
 	float pi, s, area, R;
 	float angle1, angle2, angle3;

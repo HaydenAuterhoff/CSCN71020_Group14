@@ -9,7 +9,7 @@
 
 int side = 0;
 
-int main() 
+int main()
 {
 	float sideLength1;
 	float sideLength2;
@@ -17,7 +17,8 @@ int main()
 	float sideLength4;
 
 	bool continueProgram = true;
-	while (continueProgram) 
+	bool isRectangle = true;
+	while (continueProgram)
 	{
 		printWelcome();
 
@@ -26,7 +27,7 @@ int main()
 		switch (shapeChoice)
 		{
 		case 1:
-
+				
 			printf_s("Triangle selected.\n");
 			float triangleSides[3] = { 0.f, 0.f, 0.f };
 			float* triangleSidesPtr = getTriangleSides(triangleSides);
@@ -69,14 +70,14 @@ int main()
 }
 
 
-	void printWelcome() 
-	{
-		printf_s("\n");
-		printf_s(" **********************\n");
-		printf_s("**     Welcome to     **\n");
-		printf_s("**   Polygon Checker  **\n");
-		printf_s(" **********************\n");
-	}
+void printWelcome()
+{
+	printf_s("\n");
+	printf_s(" **********************\n");
+	printf_s("**     Welcome to     **\n");
+	printf_s("**   Polygon Checker  **\n");
+	printf_s(" **********************\n");
+}
 
 int printShapeMenu() 
 {
@@ -164,23 +165,23 @@ bool verifyTriangle(float side1, float side2, float side3) {
 				else{
 				
 
-					printf("Triangle is not valid.\n");
-					valid = false;
-				}
-			}
-			
-			else {
-
 				printf("Triangle is not valid.\n");
 				valid = false;
 			}
 		}
-		
+
 		else {
 
 			printf("Triangle is not valid.\n");
 			valid = false;
 		}
+	}
+
+	else {
+
+		printf("Triangle is not valid.\n");
+		valid = false;
+	}
 
 		return valid;
 	}
