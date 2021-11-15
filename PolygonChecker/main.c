@@ -11,12 +11,8 @@ int side = 0;
 
 int main()
 {
-	float sideLength1;
-	float sideLength2;
-	float sideLength3;
-	float sideLength4;
 
-	bool isRectangle = true;
+	//bool isRectangle = true;
 	bool continueProgram = true;
 	while (continueProgram)
 	{
@@ -32,11 +28,9 @@ int main()
 			float triangleSides[3] = { 0.f, 0.f, 0.f };
 			float* triangleSidesPtr = getTriangleSides(triangleSides);
 
-			//printf("%f %f %f", triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			bool verifyTri = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 
-			bool verify = verifyTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-
-			if (verify == true) {
+			if (verifyTri == true) {
 
 				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 				printf_s("%s\n", result);
@@ -51,14 +45,17 @@ int main()
 			float rectanglePoints[8] = { 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f, 0.f };
 			float* rectanglePointsPtr = getRectanglePoints(rectanglePoints);
 
-			bool angles = getRectangleAngles(10, 20, 20, 10);
+			int sideLength1 = makeShape1(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3]); //Length of Point 1 --> Point 2
+			int sideLength2 = makeShape2(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]);
+			int sideLength3 = makeShape3(rectanglePointsPtr[4], rectanglePointsPtr[5], rectanglePointsPtr[6], rectanglePointsPtr[7]);
+			int sideLength4 = makeShape4(rectanglePointsPtr[6], rectanglePointsPtr[7], rectanglePointsPtr[0], rectanglePointsPtr[1]);
+			//int sideLength5 = makeShape5(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[4], rectanglePointsPtr[5]);
 
-			int sideLength1 = makeShape1(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3]);
-			int sideLength2 = makeShape2(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[6], rectanglePointsPtr[7]);
-			int sideLength3 = makeShape3(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]);
-			int sideLength4 = makeShape4(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[6], rectanglePointsPtr[7]);
+			printf("%d", sideLength1);
 
-			if (isRectangle = true)
+			bool verifyRec = verifyRectangle(sideLength1, sideLength2, sideLength3, sideLength4);
+
+			if (verifyRec == true)
 			{
 				rectanglePerimeter(sideLength1, sideLength2, sideLength3, sideLength4);
 				rectangleArea(sideLength1, sideLength2);
@@ -118,12 +115,12 @@ int* getTriangleSides(int* triangleSides) {
 	return triangleSides;
 }
 
-int getRectanglePoints(int* rectangleSides)
+int* getRectanglePoints(int* rectangleSides)
 {
 	int k = 0;
 	for (int i = 0.f; i < 4.f; i++)
 	{
-		printf("Enter point %d: ", i + 1);
+		printf("Enter point %d (x y): ", i + 1);
 		for (int j = 0.f; j < 2.f; j++)
 		{
 			scanf_s("%f", &rectangleSides[i + k + j]);
@@ -160,7 +157,14 @@ float* makeShape4(float point3x, float point3y, float point4x, float point4y)
 
 	return sideLength4;
 }
+/*
+float* makeShape5(float point1x, float point1y, float point3x, float point3y)
+{
+	int sideLength5 = sqrt((point1x - point3x) * (point1x - point3x) + ((point1y - point3y) * (point1y - point3y)));
 
+	return sideLength5;
+}
+*/
 bool verifyTriangle(float side1, float side2, float side3) {
 
 	bool valid;
@@ -209,4 +213,12 @@ int rectangleArea(int sideLength1, int sideLength2)
 {
 	int a = sideLength1 * sideLength2;
 	printf("Area of the rectangle = %i units squared", a);
+}
+
+bool verifyRectangle(int side1, int side2, int side3, int side4)
+{
+	if ((sqrt(side1*side1) + (side2*side2)) == (sqrt(side3*side3) + (side4*side4)))
+	{
+		return true;
+	}
 }

@@ -9,5 +9,7 @@ float* makeShape1(float, float, float, float);
 float* makeShape2(float, float, float, float);
 float* makeShape3(float, float, float, float);
 float* makeShape4(float, float, float, float);
+//float* makeShape5(float, float, float, float);
 int rectanglePerimeter(int, int, int, int);
 int rectangleArea(int, int);
+bool verifyRectangle(int, int, int, int);

@@ -1,10 +1,12 @@
+/*
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
 
 #include "GetRectangleAngles.h"
 
-float* getRectangleAngles(float side1, float side2, float side3, float side4){
+float* getRectangleAngles(float side1, float side2, float side3, float side4, float 5)
+{
 	float pi;
 	float s;
 	float R;
@@ -29,3 +31,4 @@ float* getRectangleAngles(float side1, float side2, float side3, float side4){
 
 	return 0;
 }
+*/
