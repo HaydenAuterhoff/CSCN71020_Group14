@@ -48,10 +48,10 @@ int main()
 			float* rectanglePointsPtr = getRectanglePoints(rectanglePoints);
 
 			//Call Function to determine the length between each point (In user-input order)
-			int sideLength1 = makeShape1(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3]); //Length of Point 1 --> Point 2
-			int sideLength2 = makeShape2(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]); //Length of Point 2 --> Point 3
-			int sideLength3 = makeShape3(rectanglePointsPtr[4], rectanglePointsPtr[5], rectanglePointsPtr[6], rectanglePointsPtr[7]); //Length of Point 3 --> Point 4
-			int sideLength4 = makeShape4(rectanglePointsPtr[6], rectanglePointsPtr[7], rectanglePointsPtr[0], rectanglePointsPtr[1]); //Length of Point 4 --> Point 1
+			float sideLength1 = makeShape1(rectanglePointsPtr[0], rectanglePointsPtr[1], rectanglePointsPtr[2], rectanglePointsPtr[3]); //Length of Point 1 --> Point 2
+			float sideLength2 = makeShape2(rectanglePointsPtr[2], rectanglePointsPtr[3], rectanglePointsPtr[4], rectanglePointsPtr[5]); //Length of Point 2 --> Point 3
+			float sideLength3 = makeShape3(rectanglePointsPtr[4], rectanglePointsPtr[5], rectanglePointsPtr[6], rectanglePointsPtr[7]); //Length of Point 3 --> Point 4
+			float sideLength4 = makeShape4(rectanglePointsPtr[6], rectanglePointsPtr[7], rectanglePointsPtr[0], rectanglePointsPtr[1]); //Length of Point 4 --> Point 1
 
 			//Call Function to verify shape is a rectangle using Pythagorean Theorem
 			bool verifyRec = verifyRectangle(sideLength1, sideLength2, sideLength3, sideLength4);
@@ -132,30 +132,30 @@ int* getRectanglePoints(int* rectangleSides)
 	return rectangleSides;
 }
 
-float* makeShape1(float point1x, float point1y, float point2x, float point2y)
+float makeShape1(float point1x, float point1y, float point2x, float point2y)
 {
-	int sideLength1 = sqrt((point1x - point2x) * (point1x - point2x) + ((point1y - point2y) * (point1y - point2y)));
+	float sideLength1 = sqrt((point1x - point2x) * (point1x - point2x) + ((point1y - point2y) * (point1y - point2y)));
 
 	return sideLength1;
 }
 
-float* makeShape2(float point1x, float point1y, float point4x, float point4y)
+float makeShape2(float point1x, float point1y, float point4x, float point4y)
 {
-	int sideLength2 = sqrt((point4x - point1x) * (point4x - point1x) + ((point4y - point1y) * (point4y - point1y)));
+	float sideLength2 = sqrt((point4x - point1x) * (point4x - point1x) + ((point4y - point1y) * (point4y - point1y)));
 
 	return sideLength2;
 }
 
-float* makeShape3(float point2x, float point2y, float point3x, float point3y)
+float makeShape3(float point2x, float point2y, float point3x, float point3y)
 {
-	int sideLength3 = sqrt((point2x - point3x) * (point2x - point3x) + ((point2y - point3y) * (point2y - point3y)));
+	float sideLength3 = sqrt((point2x - point3x) * (point2x - point3x) + ((point2y - point3y) * (point2y - point3y)));
 
 	return sideLength3;
 }
 
-float* makeShape4(float point3x, float point3y, float point4x, float point4y)
+float makeShape4(float point3x, float point3y, float point4x, float point4y)
 {
-	int sideLength4 = sqrt((point3x - point4x) * (point3x - point4x) + ((point3y - point4y) * (point3y - point4y)));
+	float sideLength4 = sqrt((point3x - point4x) * (point3x - point4x) + ((point3y - point4y) * (point3y - point4y)));
 
 	return sideLength4;
 }

@@ -16,6 +16,7 @@ namespace TriangleAngle
 
 		TEST_METHOD(TestMethodXXX)
 		{
+
 		}
 	};
 }

@@ -9,10 +9,10 @@ float* getTriangleAngles(float, float, float);
 
 
 int* getRectanglePoints(int*);
-float* makeShape1(float, float, float, float);
-float* makeShape2(float, float, float, float);
-float* makeShape3(float, float, float, float);
-float* makeShape4(float, float, float, float);
+float makeShape1(float, float, float, float);
+float makeShape2(float, float, float, float);
+float makeShape3(float, float, float, float);
+float makeShape4(float, float, float, float);
 bool verifyRectangle(int, int, int, int);
 int rectanglePerimeter(int, int, int, int);
 int rectangleArea(int, int);
