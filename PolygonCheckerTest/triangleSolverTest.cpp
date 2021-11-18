@@ -3,13 +3,18 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace PolygonCheckerTest
+extern "C"
 {
-	TEST_CLASS(PolygonCheckerTest)
+#include "main.h"
+}
+
+namespace TriangleSolver
+{
+	TEST_CLASS(TriangleSolver)
 	{
 	public:
-		
-		TEST_METHOD(TestMethod1)
+
+		TEST_METHOD(TestMethodXXX)
 		{
 		}
 	};
