@@ -37,7 +37,7 @@ int main()
 				printf_s("%s\n", result);
 
 				//Call Function to calculate the angles of the triangle
-				int angles = getTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+				float sum = getTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			}
 			break;
 
@@ -198,19 +198,23 @@ bool verifyTriangle(float side1, float side2, float side3) {
 	}
 
 // these two functions do the calculations for determining the perimeter and area of a rectangle
-int rectanglePerimeter(int sideLength1, int sideLength2, int sideLength3, int sideLength4)
+float rectanglePerimeter(float sideLength1, float sideLength2, float sideLength3, float sideLength4)
 {
-	int p = sideLength1 + sideLength2 + sideLength3 + sideLength4;
-	printf("Perimeter of the shape = %i units\n", p);
+	float p = sideLength1 + sideLength2 + sideLength3 + sideLength4;
+	printf("\nPerimeter of the shape = %.0f units\n", p);
+
+	return p;
 }
 
-int rectangleArea(int sideLength1, int sideLength2)
+float rectangleArea(float sideLength1, float sideLength2)
 {
-	int a = sideLength1 * sideLength2;
-	printf("Area of the rectangle = %i units squared", a);
+	float a = sideLength1 * sideLength2;
+	printf("Area of the rectangle = %.0f units squared\n", a);
+
+	return a;
 }
 
-bool verifyRectangle(int side1, int side2, int side3, int side4) //Verify the rectangle using Pythagorean Theorem (Two right-angled triangles)
+bool verifyRectangle(float side1, float side2, float side3, float side4) //Verify the rectangle using Pythagorean Theorem (Two right-angled triangles)
 {
 	if (sqrt((side1 * side1) + (side2 * side2)) == (sqrt((side3 * side3) + (side4 * side4))))
 	{
